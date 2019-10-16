@@ -1,95 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:uxlab/Models/Exame.dart';
-import 'package:uxlab/Widgets/UxCard.dart';
+import 'package:uxlab/Pages/MeusExamesPage.dart';
 
-class NavBar extends StatelessWidget {
+class NavBar extends StatefulWidget {
   NavBar({Key key}) : super(key: key);
 
-  
-  int _selectedIndex = 1;
+  @override
+  _NavBarState createState() => _NavBarState();
+}
 
+class _NavBarState extends State<NavBar> {
+  int _selectedIndex = 1;
+  static var _widgetOptions = {
+    0: Text('Tela de Agendamento'),
+    1: MeusExamesPage(),    
+    2: Text('Tela de Perfil'),
+  };
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: ListView(
-        padding: const EdgeInsets.only(top: 50, right: 15, left: 15),
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Text(
-                        'Próximos Exames',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                  ],
-                ),
-                UxCard(
-                  ambiente: 'teste',
-                  exame: Exame(
-                    idExame: 12,
-                    codExame: 2019,
-                    status: 'aguardando_analise',
-                    dataColeta: DateTime.parse('2019-10-15'),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text(
-                      'Meus Exames',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                ],
-              ),
-              UxCard(
-                ambiente: 'teste',
-                exame: Exame(
-                  idExame: 12,
-                  codExame: 2019,
-                  status: 'aguardando_analise',
-                  dataColeta: DateTime.parse('2019-10-15'),
-                ),
-              ),
-              UxCard(
-                ambiente: 'teste',
-                exame: Exame(
-                  idExame: 11,
-                  codExame: 3892,
-                  status: 'concluido',
-                  dataColeta: DateTime.parse('2019-09-12'),
-                ),
-              ),
-              UxCard(
-                ambiente: 'teste',
-                exame: Exame(
-                  idExame: 11,
-                  codExame: 3892,
-                  status: 'pendente',
-                  dataColeta: DateTime.parse('2019-09-12'),
-                ),
-              ),
-            ],
-          ),
-        ],
+      body: Center(
+        child: _widgetOptions[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        unselectedItemColor: Colors.blueGrey,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
@@ -104,6 +43,9 @@ class NavBar extends StatelessWidget {
             title: Text('Minha Conta'),
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blueGrey,
+        onTap: _onItemTapped,
       ),
     );
   }
