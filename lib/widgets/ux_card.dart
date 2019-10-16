@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
-import 'package:uxlab/Models/Exame.dart';
+import 'package:uxlab/models/exame.dart';
 
 class UxCard extends StatelessWidget {
   final Exame exame;

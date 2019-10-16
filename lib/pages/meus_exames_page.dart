@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uxlab/Models/Exame.dart';
-import 'package:uxlab/Widgets/UxCard.dart';
+import 'package:uxlab/models/exame.dart';
+import 'package:uxlab/widgets/ux_card.dart';
 
 class MeusExamesPage extends StatelessWidget {
   MeusExamesPage() : super();

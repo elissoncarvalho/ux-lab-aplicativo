@@ -1,6 +1,8 @@
-import 'package:uxlab/Models/Endereco.dart';
-import 'package:uxlab/Models/Status.dart';
-import 'package:uxlab/Models/Usuario.dart';
+
+
+import 'package:uxlab/models/endereco.dart';
+import 'package:uxlab/models/status.dart';
+import 'package:uxlab/models/usuario.dart';
 
 class LoginController {
 

@@ -1,4 +1,6 @@
-import 'package:uxlab/Models/Endereco.dart';
+
+
+import 'package:uxlab/models/endereco.dart';
 
 class Usuario {
   final String nome;

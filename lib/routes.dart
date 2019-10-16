@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:uxlab/Pages/Auth/Auth.dart';
-import 'package:uxlab/Pages/Auth/Cadastrar/CadastroPage.dart';
-import 'package:uxlab/Pages/Auth/Login/LoginPage.dart';
-import 'package:uxlab/Pages/NavBar.dart';
+import 'package:uxlab/pages/auth/auth.dart';
+import 'package:uxlab/pages/auth/cadastrar/cadastro_page.dart';
+import 'package:uxlab/pages/auth/login/login_page.dart';
+import 'package:uxlab/pages/nav_bar.dart';
 
 class Routes extends StatelessWidget {
   @override

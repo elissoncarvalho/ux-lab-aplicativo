@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uxlab/Pages/MeusExamesPage.dart';
+import 'package:uxlab/pages/meus_exames_page.dart';
 
 class NavBar extends StatefulWidget {
   NavBar({Key key}) : super(key: key);
