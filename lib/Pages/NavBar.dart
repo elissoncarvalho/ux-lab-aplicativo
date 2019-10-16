@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uxlab/Models/Exame.dart';
+import 'package:uxlab/Widgets/UxCard.dart';
 
 class NavBar extends StatelessWidget {
   NavBar({Key key}) : super(key: key);
@@ -14,29 +16,32 @@ class NavBar extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.only(top: 50, right: 15, left: 15),
         children: [
-          Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text(
-                      'Próximos Exames',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Text(
+                        'Próximos Exames',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                ],
-              ),
-              Card(
-                child: ListTile(
-                  contentPadding: EdgeInsets.only(left: 15, right: 15),
-                  leading: Text('2092'),
-                  title: Text('Data: 18/04/2019'),
-                  subtitle: Text('Preparo: Sim'),
-                  trailing: Icon(Icons.add),
+                  ],
                 ),
-              ),
-            ],
+                UxCard(
+                  ambiente: 'teste',
+                  exame: Exame(
+                    idExame: 12,
+                    codExame: 2019,
+                    status: 'aguardando_analise',
+                    dataColeta: DateTime.parse('2019-10-15'),
+                  ),
+                ),
+              ],
+            ),
           ),
           Column(
             children: <Widget>[
@@ -51,13 +56,31 @@ class NavBar extends StatelessWidget {
                     ),
                 ],
               ),
-              Card(
-                child: ListTile(
-                  contentPadding: EdgeInsets.only(left: 15, right: 15),
-                  leading: Text('00029'),
-                  title: Text('Status: Aguardando análise'),
-                  subtitle: Text('Data da Coleta: 20/04/2019'),
-                  trailing: Icon(Icons.add),
+              UxCard(
+                ambiente: 'teste',
+                exame: Exame(
+                  idExame: 12,
+                  codExame: 2019,
+                  status: 'aguardando_analise',
+                  dataColeta: DateTime.parse('2019-10-15'),
+                ),
+              ),
+              UxCard(
+                ambiente: 'teste',
+                exame: Exame(
+                  idExame: 11,
+                  codExame: 3892,
+                  status: 'concluido',
+                  dataColeta: DateTime.parse('2019-09-12'),
+                ),
+              ),
+              UxCard(
+                ambiente: 'teste',
+                exame: Exame(
+                  idExame: 11,
+                  codExame: 3892,
+                  status: 'pendente',
+                  dataColeta: DateTime.parse('2019-09-12'),
                 ),
               ),
             ],
