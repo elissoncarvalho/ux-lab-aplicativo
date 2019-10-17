@@ -12,7 +12,7 @@ class _NavBarState extends State<NavBar> {
   int _selectedIndex = 1;
   static var _widgetOptions = {
     0: Text('Tela de Agendamento'),
-    1: MeusExamesPage(),    
+    1: MeusExamesPage(),
     2: Text('Tela de Perfil'),
   };
 
@@ -44,7 +44,7 @@ class _NavBarState extends State<NavBar> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blueGrey,
+        selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
       ),
     );

@@ -1,7 +1,7 @@
 class DefinicaoApp {
   final bool permiteNotificacao;
 
-  DefinicaoApp ({
+  DefinicaoApp({
     this.permiteNotificacao,
   });
 }

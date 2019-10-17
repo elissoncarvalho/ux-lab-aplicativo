@@ -3,7 +3,7 @@ class Notificacao {
   final String descricao;
   final DateTime dateTime;
 
-  Notificacao ({
+  Notificacao({
     this.titulo,
     this.descricao,
     this.dateTime,

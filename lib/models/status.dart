@@ -3,7 +3,7 @@ class Status {
   final String titulo;
   final String descricao;
 
-  Status ({
+  Status({
     this.status,
     this.titulo,
     this.descricao,

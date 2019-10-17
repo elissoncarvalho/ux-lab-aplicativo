@@ -11,7 +11,6 @@ class Routes extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'UX Lab',
       theme: ThemeData(
-        
         primarySwatch: Colors.blue,
         fontFamily: 'TrajanPro',
       ),

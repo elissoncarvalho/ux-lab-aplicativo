@@ -5,7 +5,6 @@ class CadastroContaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -15,40 +14,42 @@ class CadastroContaPage extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blue.withOpacity(.6), 
+          color: Colors.blue.withOpacity(.6),
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text(
-              'Cadastrar Conta', style: TextStyle(fontSize: 14),
+              'Cadastrar Conta',
+              style: TextStyle(fontSize: 14),
             ),
             centerTitle: true,
             backgroundColor: Colors.black.withOpacity(0.25),
-            leading: IconButton(icon:Icon(Icons.keyboard_arrow_left),
-              onPressed:() => Navigator.pop(context, false),
+            leading: IconButton(
+              icon: Icon(Icons.keyboard_arrow_left),
+              onPressed: () => Navigator.pop(context, false),
             ),
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.done),
                 onPressed: () {
                   return showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: const Text('Entrando...'),
-                        content: const Text('login sendo realizado, aguarde...'),
-                        actions: <Widget>[
-                          FlatButton(
-                            child: Text('Okay'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    }
-                  );
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Entrando...'),
+                          content:
+                              const Text('login sendo realizado, aguarde...'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('Okay'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      });
                 },
               ),
             ],
@@ -71,7 +72,7 @@ class CadastroContaPage extends StatelessWidget {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(25.0),
                               borderSide: BorderSide(),
-                            ),                      
+                            ),
                           ),
                         ),
                       ),
@@ -86,7 +87,7 @@ class CadastroContaPage extends StatelessWidget {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(25.0),
                               borderSide: BorderSide(),
-                            ),                      
+                            ),
                           ),
                         ),
                       ),

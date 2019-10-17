@@ -1,8 +1,6 @@
-
-
 import 'package:uxlab/models/endereco.dart';
 
-class Usuario {
+class Cliente {
   final String nome;
   final String email;
   final String cpf;
@@ -12,7 +10,7 @@ class Usuario {
   final DateTime dataNascimento;
   final Endereco endereco;
 
-  Usuario({
+  Cliente({
     this.nome,
     this.email,
     this.cpf,
@@ -22,5 +20,4 @@ class Usuario {
     this.dataNascimento,
     this.endereco,
   });
-    
 }

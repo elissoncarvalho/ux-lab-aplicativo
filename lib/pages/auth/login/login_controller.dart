@@ -1,13 +1,10 @@
-
-
 import 'package:uxlab/models/endereco.dart';
 import 'package:uxlab/models/status.dart';
-import 'package:uxlab/models/usuario.dart';
+import 'package:uxlab/models/cliente.dart';
 
 class LoginController {
-
-  // Criando Usuario Imaginario
-  final Usuario usuario = Usuario(
+  // Criando Cliente Imaginario
+  final Cliente cliente = Cliente(
     nome: 'Maria Luisa',
     email: 'maria@email.com',
     cpf: '123.123.123-32',
@@ -27,27 +24,26 @@ class LoginController {
     telefone: '(37) 99158-9173',
   );
 
-  Status Autentica(Usuario usuario) {
-    
-    if(usuario.cpf.isNotEmpty){
-      if (this.usuario.cpf != usuario.cpf) {
+  Status Autentica(Cliente cliente) {
+    if (cliente.cpf.isNotEmpty) {
+      if (this.cliente.cpf != cliente.cpf) {
         return Status(
           status: 'error',
           titulo: 'Ops!',
           descricao: 'Não encontramos CPF correspondente.',
         );
       }
-    } else if (usuario.email.isNotEmpty) {
-      if (this.usuario.email != usuario.email) {
+    } else if (cliente.email.isNotEmpty) {
+      if (this.cliente.email != cliente.email) {
         return Status(
           status: 'error',
           titulo: 'Ops!',
           descricao: 'Não encontramos Email correspondente.',
         );
       }
-    } 
+    }
 
-    if (this.usuario.senha != usuario.senha) {
+    if (this.cliente.senha != cliente.senha) {
       return Status(
         status: 'error',
         titulo: 'Ops!',
@@ -59,6 +55,6 @@ class LoginController {
       status: 'success',
       titulo: 'Sucesso',
       descricao: 'Login autenticado com sucesso!',
-    );   
-  }  
+    );
+  }
 }

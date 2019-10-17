@@ -5,7 +5,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -15,18 +14,20 @@ class LoginPage extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blue.withOpacity(.6), 
+          color: Colors.blue.withOpacity(.6),
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text(
-              'Entrar', style: TextStyle(fontSize: 14),
+              'Entrar',
+              style: TextStyle(fontSize: 14),
             ),
             centerTitle: true,
             backgroundColor: Colors.black.withOpacity(0.25),
-            leading: IconButton(icon:Icon(Icons.keyboard_arrow_left),
-              onPressed:() => Navigator.pop(context, false),
+            leading: IconButton(
+              icon: Icon(Icons.keyboard_arrow_left),
+              onPressed: () => Navigator.pop(context, false),
             ),
             actions: <Widget>[
               IconButton(
@@ -54,7 +55,7 @@ class LoginPage extends StatelessWidget {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
                           borderSide: BorderSide(),
-                        ),                      
+                        ),
                       ),
                     ),
                     TextFormField(
@@ -70,12 +71,13 @@ class LoginPage extends StatelessWidget {
                     ),
                     ButtonTheme(
                       child: FlatButton(
-                        onPressed: (){
+                        onPressed: () {
                           Navigator.of(context).pushNamed('/Auth/');
                         },
                         child: const Text(
                           'RECUPERAR SENHA',
-                          style: TextStyle(decoration: TextDecoration.underline),                      
+                          style:
+                              TextStyle(decoration: TextDecoration.underline),
                         ),
                       ),
                     ),

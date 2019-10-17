@@ -8,7 +8,7 @@ class Endereco {
   final int numero;
   final int cep;
 
-  Endereco ({
+  Endereco({
     this.endereco,
     this.bairro,
     this.cidade,
