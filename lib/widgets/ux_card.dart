@@ -5,11 +5,30 @@ import 'package:uxlab/models/ordem_pedido.dart';
 class UxCard extends StatelessWidget {
   final OrdemPedido ordemPedido;
 
-  UxCard({Key key, @required this.ordemPedido})
-      : super(key: key);
+  UxCard({Key key, @required this.ordemPedido}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 90,
+              child: _tipoCard(),
+            ),
+            Expanded(
+              flex: 10,
+              child: Icon(Icons.add),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column _tipoCard() {
     var _status = {
       'concluido': {
         'txt': 'Concluído',
@@ -29,26 +48,6 @@ class UxCard extends StatelessWidget {
       },
     };
 
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 90,
-              child: _tipoCard(_status),
-            ),
-            Expanded(
-              flex: 10,
-              child: Icon(Icons.add),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Column _tipoCard(_status) {
     if (this.ordemPedido.status == 'aguardando_coleta') {
       return Column(
         children: <Widget>[

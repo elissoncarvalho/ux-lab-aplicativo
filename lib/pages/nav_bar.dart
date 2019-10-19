@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uxlab/pages/agenda_ordem.dart';
 import 'package:uxlab/pages/meus_exames_page.dart';
 
 class NavBar extends StatefulWidget {
@@ -11,7 +12,7 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 1;
   static var _widgetOptions = {
-    0: Text('Tela de Agendamento'),
+    0: AgendaOrdem(),
     1: MeusExamesPage(),
     2: Text('Tela de Perfil'),
   };

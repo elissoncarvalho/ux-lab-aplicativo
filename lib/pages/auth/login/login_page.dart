@@ -52,9 +52,18 @@ class LoginPage extends StatelessWidget {
                       decoration: InputDecoration(
                         labelText: 'Email ou CPF',
                         fillColor: Colors.white,
+                        labelStyle: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w400),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(color: Colors.white, width: 2),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(color: Colors.white, width: 2),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(),
                         ),
                       ),
                     ),
@@ -63,9 +72,18 @@ class LoginPage extends StatelessWidget {
                       obscureText: true,
                       decoration: InputDecoration(
                         labelText: 'Senha',
+                        labelStyle: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w400),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(color: Colors.white, width: 2),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(color: Colors.white, width: 2),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(),
                         ),
                       ),
                     ),
@@ -76,8 +94,9 @@ class LoginPage extends StatelessWidget {
                         },
                         child: const Text(
                           'RECUPERAR SENHA',
-                          style:
-                              TextStyle(decoration: TextDecoration.underline),
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: Colors.white),
                         ),
                       ),
                     ),
