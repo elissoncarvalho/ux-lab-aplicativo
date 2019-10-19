@@ -49,6 +49,7 @@ class LoginPage extends StatelessWidget {
                     TextFormField(
                       autofocus: true,
                       keyboardType: TextInputType.emailAddress,
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         labelText: 'Email ou CPF',
                         fillColor: Colors.white,
@@ -69,6 +70,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     TextFormField(
                       keyboardType: TextInputType.text,
+                      style: TextStyle(color: Colors.white),
                       obscureText: true,
                       decoration: InputDecoration(
                         labelText: 'Senha',

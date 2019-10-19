@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:uxlab/pages/auth/auth.dart';
 import 'package:uxlab/pages/auth/cadastrar/cadastro_page.dart';
 import 'package:uxlab/pages/auth/login/login_page.dart';
@@ -12,7 +13,6 @@ class Routes extends StatelessWidget {
       title: 'UX Lab',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'TrajanPro',
       ),
       routes: {
         // Rotas de Login e Cadastro
@@ -24,6 +24,13 @@ class Routes extends StatelessWidget {
         // Rotas de Navegação
         '/home': (context) => NavBar(),
       },
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('pt'),
+      ],
     );
   }
 }

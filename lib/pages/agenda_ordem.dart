@@ -1,6 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:intl/intl.dart';
 
 class AgendaOrdem extends StatelessWidget {
   @override
@@ -36,9 +37,7 @@ class AgendaOrdem extends StatelessWidget {
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: 'Paciente',
-                labelStyle: TextStyle(
-                  color: Colors.blue
-                ),
+                labelStyle: TextStyle(color: Colors.blue),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(color: Colors.blue),
@@ -53,11 +52,10 @@ class AgendaOrdem extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 22),
             child: TextFormField(
               keyboardType: TextInputType.number,
+              controller: MaskedTextController(mask: '000.000.000-00'),
               decoration: InputDecoration(
                 labelText: 'CPF',
-                labelStyle: TextStyle(
-                  color: Colors.blue
-                ),
+                labelStyle: TextStyle(color: Colors.blue),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(color: Colors.blue),
@@ -74,9 +72,7 @@ class AgendaOrdem extends StatelessWidget {
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: 'Vinculo',
-                labelStyle: TextStyle(
-                  color: Colors.blue
-                ),
+                labelStyle: TextStyle(color: Colors.blue),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(color: Colors.blue),
@@ -91,11 +87,10 @@ class AgendaOrdem extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 22),
             child: TextFormField(
               keyboardType: TextInputType.number,
+              controller: MaskedTextController(mask: '(00) 00000-0000'),
               decoration: InputDecoration(
                 labelText: 'Telefone',
-                labelStyle: TextStyle(
-                  color: Colors.blue
-                ),
+                labelStyle: TextStyle(color: Colors.blue),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(color: Colors.blue),
@@ -166,13 +161,29 @@ class AgendaOrdem extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 22),
-            child: TextFormField(
-              keyboardType: TextInputType.datetime,
+            child: DateTimeField(
+              format: DateFormat("dd MMMM yyyy HH:mm"),
+              onShowPicker: (context, currentValue) async {
+                final date = await showDatePicker(
+                    context: context,
+                    firstDate: DateTime.now(),
+                    initialDate: currentValue ?? DateTime.now(),
+                    lastDate: DateTime(2019, 12, 31));
+
+                if (date != null) {
+                  final time = await showTimePicker(
+                    context: context,
+                    initialTime:
+                        TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
+                  );
+                  return DateTimeField.combine(date, time);
+                } else {
+                  return currentValue;
+                }
+              },
               decoration: InputDecoration(
                 labelText: 'Data da coleta',
-                labelStyle: TextStyle(
-                  color: Colors.blue
-                ),
+                labelStyle: TextStyle(color: Colors.blue),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(color: Colors.blue),
