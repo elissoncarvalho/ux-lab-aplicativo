@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uxlab/pages/agenda_ordem_page.dart';
 import 'package:uxlab/pages/meus_exames_page.dart';
+import 'package:uxlab/pages/minha_conta_page.dart';
 
 class NavBar extends StatefulWidget {
   NavBar({Key key}) : super(key: key);
@@ -14,7 +15,7 @@ class _NavBarState extends State<NavBar> {
   static var _widgetOptions = {
     0: AgendaOrdemPage(),
     1: MeusExamesPage(),
-    2: Text('Tela de Perfil'),
+    2: MinhaContaPage(),
   };
 
   void _onItemTapped(int index) {
