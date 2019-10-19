@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:uxlab/pages/auth/auth.dart';
+import 'package:uxlab/pages/auth/auth_page.dart';
 import 'package:uxlab/pages/auth/cadastrar/cadastro_page.dart';
 import 'package:uxlab/pages/auth/login/login_page.dart';
-import 'package:uxlab/pages/nav_bar.dart';
+import 'package:uxlab/widgets/nav_bar.dart';
 
 class Routes extends StatelessWidget {
   @override
@@ -16,10 +16,10 @@ class Routes extends StatelessWidget {
       ),
       routes: {
         // Rotas de Login e Cadastro
-        '/': (context) => Auth(),
+        '/': (context) => AuthPage(),
         '/Auth/Login': (context) => LoginPage(),
         '/Auth/Cadastro': (context) => CadastroPage(),
-        '/auth/RecuperarSenha': (context) => Auth(),
+        '/auth/RecuperarSenha': (context) => AuthPage(),
 
         // Rotas de Navegação
         '/home': (context) => NavBar(),

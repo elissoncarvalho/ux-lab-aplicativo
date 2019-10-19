@@ -3,7 +3,7 @@ import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
 
-class AgendaOrdem extends StatelessWidget {
+class AgendaOrdemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
