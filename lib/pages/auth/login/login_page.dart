@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uxlab/widgets/ux_input.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key key}) : super(key: key);
@@ -46,48 +47,19 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    TextFormField(
+                    UxInput(
+                      textLabel: 'Email ou CPF',
+                      textColor: Colors.white,
+                      textPass: false,
                       autofocus: true,
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        labelText: 'Email ou CPF',
-                        fillColor: Colors.white,
-                        labelStyle: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w400),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(color: Colors.white, width: 2),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(color: Colors.white, width: 2),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                      ),
                     ),
-                    TextFormField(
+                    UxInput(
+                      textLabel: 'Senha',
+                      textColor: Colors.white,
+                      textPass: true,
+                      autofocus: false,
                       keyboardType: TextInputType.text,
-                      style: TextStyle(color: Colors.white),
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: 'Senha',
-                        labelStyle: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w400),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(color: Colors.white, width: 2),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(color: Colors.white, width: 2),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                      ),
                     ),
                     ButtonTheme(
                       child: FlatButton(

@@ -41,12 +41,14 @@ class _NavBarState extends State<NavBar> {
             title: Text('Meus Exames'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person_outline),
             title: Text('Minha Conta'),
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
+        backgroundColor: Colors.white,
+        unselectedItemColor: Colors.blueGrey,
         onTap: _onItemTapped,
       ),
     );

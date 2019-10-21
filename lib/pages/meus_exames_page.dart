@@ -7,22 +7,26 @@ class MeusExamesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.only(top: 50, right: 15, left: 15),
+      padding: const EdgeInsets.only(top: 60, right: 15, left: 15),
       children: [
         Padding(
-          padding: const EdgeInsets.only(bottom: 20),
+          padding: const EdgeInsets.only(bottom: 25),
           child: Column(
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text(
-                    'Próximos Exames',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'Próximos Exames',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               UxCard(
                 ordemPedido: OrdemPedido(
@@ -50,6 +54,7 @@ class MeusExamesPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
+                    color: Colors.blueGrey
                   ),
                 ),
               ],

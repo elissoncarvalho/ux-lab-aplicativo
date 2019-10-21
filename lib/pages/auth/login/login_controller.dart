@@ -1,5 +1,4 @@
 import 'package:uxlab/models/endereco.dart';
-// import 'package:uxlab/models/status.dart';
 import 'package:uxlab/models/cliente.dart';
 
 class LoginController {

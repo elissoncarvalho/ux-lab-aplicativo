@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
+import 'package:uxlab/widgets/ux_input.dart';
 
 class AgendaOrdemPage extends StatelessWidget {
   @override
@@ -12,7 +14,7 @@ class AgendaOrdemPage extends StatelessWidget {
           'Agendar Exame',
           style: TextStyle(
             fontSize: 14,
-            color: Colors.black54,
+            color: Colors.blueGrey,
           ),
         ),
         centerTitle: true,
@@ -23,7 +25,7 @@ class AgendaOrdemPage extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushNamed('/home');
             },
-            color: Colors.black54,
+            color: Colors.blueGrey,
           ),
         ],
       ),
@@ -31,75 +33,40 @@ class AgendaOrdemPage extends StatelessWidget {
         padding:
             const EdgeInsets.only(top: 25, bottom: 16, left: 16, right: 16),
         children: <Widget>[
-          Padding(
+          UxInput(
+            textLabel: 'Paciente',
+            textColor: Colors.blueGrey,
+            labelColor: Colors.blue,
+            labelBorderWidth: 1,
+            autofocus: true,
+            keyboardType: TextInputType.text,
             padding: const EdgeInsets.only(bottom: 22),
-            child: TextFormField(
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: 'Paciente',
-                labelStyle: TextStyle(color: Colors.blue),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(color: Colors.blue),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-              ),
-            ),
           ),
-          Padding(
+          UxInput(
+            textLabel: 'CPF',
+            textMask: MaskedTextController(mask: '000.000.000-00'),
+            textColor: Colors.blueGrey,
+            labelColor: Colors.blue,
+            labelBorderWidth: 1,
+            keyboardType: TextInputType.number,
             padding: const EdgeInsets.only(bottom: 22),
-            child: TextFormField(
-              keyboardType: TextInputType.number,
-              controller: MaskedTextController(mask: '000.000.000-00'),
-              decoration: InputDecoration(
-                labelText: 'CPF',
-                labelStyle: TextStyle(color: Colors.blue),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(color: Colors.blue),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-              ),
-            ),
           ),
-          Padding(
+          UxInput(
+            textLabel: 'Vinculo',
+            textColor: Colors.blueGrey,
+            labelColor: Colors.blue,
+            labelBorderWidth: 1,
+            keyboardType: TextInputType.text,
             padding: const EdgeInsets.only(bottom: 22),
-            child: TextFormField(
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: 'Vinculo',
-                labelStyle: TextStyle(color: Colors.blue),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(color: Colors.blue),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-              ),
-            ),
           ),
-          Padding(
+          UxInput(
+            textLabel: 'Telefone',
+            textMask: MaskedTextController(mask: '(00) 00000-0000'),
+            textColor: Colors.blueGrey,
+            labelColor: Colors.blue,
+            labelBorderWidth: 1,
+            keyboardType: TextInputType.number,
             padding: const EdgeInsets.only(bottom: 22),
-            child: TextFormField(
-              keyboardType: TextInputType.number,
-              controller: MaskedTextController(mask: '(00) 00000-0000'),
-              decoration: InputDecoration(
-                labelText: 'Telefone',
-                labelStyle: TextStyle(color: Colors.blue),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide(color: Colors.blue),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-              ),
-            ),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 25),

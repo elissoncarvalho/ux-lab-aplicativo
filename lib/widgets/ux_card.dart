@@ -10,8 +10,9 @@ class UxCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
+      child: FlatButton(
         padding: const EdgeInsets.all(10.0),
+        onPressed: () {},
         child: Row(
           children: [
             Expanded(
