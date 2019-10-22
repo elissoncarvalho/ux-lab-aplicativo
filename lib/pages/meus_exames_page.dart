@@ -7,14 +7,14 @@ class MeusExamesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.only(top: 60, right: 15, left: 15),
+      padding: const EdgeInsets.only(top: 50, right: 15, left: 15),
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 25),
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(bottom: 20),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Row(
                   children: <Widget>[
                     Text(
@@ -40,24 +40,27 @@ class MeusExamesPage extends StatelessWidget {
                     idOrdemPedido: 20190004,
                     status: 'aguardando_coleta',
                     dataColeta: DateTime.parse('2019-10-20'),
-                    preparoExame: false),
+                    preparoExame: true),
               ),
             ],
           ),
         ),
         Column(
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Text(
-                  'Meus Exames',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueGrey
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Meus Exames',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blueGrey
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             UxCard(
               ordemPedido: OrdemPedido(

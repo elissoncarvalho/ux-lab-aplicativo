@@ -1,12 +1,17 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:uxlab/models/cliente.dart';
+import 'package:uxlab/widgets/ux_button_item.dart';
 
 class MinhaContaPage extends StatelessWidget {
-  MinhaContaPage() : super();
+  final Cliente cliente;
+
+  MinhaContaPage({Key key, @required this.cliente}) : super();
+
   @override
   Widget build(BuildContext context) {
-    AssetImage _urlImagemPerfil = AssetImage('assets/images/avatar_girl.jpg');
+    AssetImage _urlImagemPerfil = AssetImage(this.cliente.urlImagePerfil);
     return Container(
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -41,7 +46,7 @@ class MinhaContaPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Luísa Braga Santos',
+                          this.cliente.nome,
                           style: TextStyle(
                             fontSize: 27,
                             fontWeight: FontWeight.normal,
@@ -51,21 +56,21 @@ class MinhaContaPage extends StatelessWidget {
                         Column(
                           children: <Text>[
                             Text(
-                              'Cliente: 00021',
+                              'Cliente: ${this.cliente.codCliente}',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
                               ),
                             ),
                             Text(
-                              'CPF: 123.123.123-12',
+                              'CPF: ${this.cliente.cpf}',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
                               ),
                             ),
                             Text(
-                              'E-mail: luísa.santos@email.com',
+                              'E-mail: ${this.cliente.email}',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
@@ -89,94 +94,36 @@ class MinhaContaPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
                       child: Column(
-                        children: <ButtonTheme>[
-                          ButtonTheme(
-                            height: 55.0,
-                            child: FlatButton(
-                              onPressed: () {
-                                
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 32, right: 32),
-                                    child: Icon(Icons.edit),
-                                  ),
-                                  Text('Editar perfil'),
-                                ],
-                              ),
-                              textColor: Colors.blue,
-                            ),
+                        children: <UxButtonItem>[
+                          UxButtonItem(
+                            text: 'Editar perfil',
+                            icon: Icon(Icons.edit),
+                            onPressed: () {},
                           ),
-                          ButtonTheme(
-                            height: 55.0,
-                            child: FlatButton(
-                              onPressed: () {
-                                
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 32, right: 32),
-                                    child: Icon(Icons.map),
-                                  ),
-                                  Text('Editar endereço'),
-                                ],
-                              ),
-                              textColor: Colors.blue,
-                            ),
-                          ),
+                          UxButtonItem(
+                            text: 'Editar endereço',
+                            icon: Icon(Icons.map),
+                            onPressed: () {},
+                          )
                         ],
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
                       child: Column(
-                        children: <ButtonTheme>[
-                          ButtonTheme(
-                            height: 55.0,
-                            child: FlatButton(
-                              onPressed: () {
-                                
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 32, right: 32),
-                                    child: Icon(Icons.settings),
-                                  ),
-                                  Text('Definições do aplicativo'),
-                                ],
-                              ),
-                              textColor: Colors.blue,
-                            ),
+                        children: <UxButtonItem>[
+                          UxButtonItem(
+                            text: 'Definições do aplicativo',
+                            icon: Icon(Icons.settings),
+                            onPressed: () {},
                           ),
-                          ButtonTheme(
-                            height: 55.0,
-                            child: FlatButton(
-                              onPressed: () {
-                                Navigator.of(context).pushNamed('/');
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 32, right: 32),
-                                    child: Icon(Icons.exit_to_app),
-                                  ),
-                                  Text('Sair'),
-                                ],
-                              ),
-                              textColor: Colors.blue,
-                            ),
-                          ),
+                          UxButtonItem(
+                            text: 'Sair',
+                            icon: Icon(Icons.exit_to_app),
+                            onPressed: () {
+                              Navigator.of(context).pushNamed('/');
+                            },
+                          )
                         ],
                       ),
                     ),

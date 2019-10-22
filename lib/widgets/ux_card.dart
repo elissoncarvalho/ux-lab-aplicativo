@@ -10,6 +10,8 @@ class UxCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.only(bottom: 10),
+      elevation: 3,
       child: FlatButton(
         padding: const EdgeInsets.all(10.0),
         onPressed: () {},
@@ -21,7 +23,10 @@ class UxCard extends StatelessWidget {
             ),
             Expanded(
               flex: 10,
-              child: Icon(Icons.add),
+              child: Icon(
+                Icons.add,
+                color: Colors.blueGrey,
+              ),
             ),
           ],
         ),
