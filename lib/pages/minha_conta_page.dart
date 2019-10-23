@@ -19,7 +19,7 @@ class MinhaContaPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-              flex: 1,
+              flex: 55,
               child: Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -84,7 +84,7 @@ class MinhaContaPage extends StatelessWidget {
                 ),
               )),
           Expanded(
-              flex: 1,
+              flex: 45,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,

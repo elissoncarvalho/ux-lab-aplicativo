@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uxlab/widgets/ux_input.dart';
 
 class CadastroPage extends StatelessWidget {
   CadastroPage({Key key}) : super(key: key);
@@ -60,21 +61,11 @@ class CadastroPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 30, right: 30, left: 30),
                   child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 30),
-                        child: TextFormField(
-                          autofocus: true,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                            labelText: 'Email',
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25.0),
-                              borderSide: BorderSide(),
-                            ),
-                          ),
-                        ),
+                    children: [
+                      UxInput(
+                        textLabel: 'Teste',
+                        textColor: Colors.white,
+                        labelColor: Colors.red,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 30),
