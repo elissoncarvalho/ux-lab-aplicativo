@@ -4,8 +4,9 @@ import 'package:uxlab/models/ordem_pedido.dart';
 
 class UxCard extends StatelessWidget {
   final OrdemPedido ordemPedido;
+  final VoidCallback onPressed;
 
-  UxCard({Key key, @required this.ordemPedido}) : super(key: key);
+  UxCard({Key key, @required this.ordemPedido, @required this.onPressed }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class UxCard extends StatelessWidget {
       elevation: 3,
       child: FlatButton(
         padding: const EdgeInsets.all(10.0),
-        onPressed: () {},
+        onPressed: this.onPressed,
         child: Row(
           children: [
             Expanded(

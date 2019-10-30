@@ -12,7 +12,7 @@ class Routes extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'UX Lab',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blue
       ),
       routes: {
         // Rotas de Login e Cadastro
