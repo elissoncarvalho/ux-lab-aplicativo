@@ -1,36 +1,22 @@
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:uxlab/models/endereco.dart';
 
-class Cliente {
-  final String codCliente;
+class Empresa {
+  final String codEmpresa;
   final String nome;
   final String email;
-  final String cpf;
-  final String sexo;
-  final String urlImagePerfil;
+  final String cnpj;
   final String telefone;
-  final String senha;
-  final DateTime dataNascimento;
   final Endereco endereco;
 
-  Cliente({
-    this.codCliente,
+  Empresa({
+    this.codEmpresa,
     this.nome,
     this.email,
-    this.cpf,
-    this.sexo,
-    this.urlImagePerfil,
+    this.cnpj,
     this.telefone,
-    this.senha,
-    this.dataNascimento,
     this.endereco,
   });
-
-  String maskCpf() {
-    MaskedTextController mask =
-        MaskedTextController(text: this.cpf, mask: '000.000.000-00');
-    return mask.text;
-  }
 
   String maskTelefone() {
     MaskedTextController mask = MaskedTextController(

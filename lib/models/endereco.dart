@@ -18,4 +18,10 @@ class Endereco {
     this.numero,
     this.cep,
   });
+
+  String getDisplay() {
+    String display =
+        '${this.endereco}, ${this.numero}, ${this.bairro}, ${this.cidade}';
+    return display;
+  }
 }
