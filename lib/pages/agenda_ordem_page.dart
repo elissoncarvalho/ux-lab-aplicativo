@@ -1,13 +1,20 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
+import 'package:uxlab/models/ordem_pedido.dart';
+import 'package:uxlab/widgets/camera/ux_camera.dart';
+import 'package:uxlab/widgets/camera/ux_display_picture.dart';
 import 'package:uxlab/widgets/ux_input.dart';
 
 class AgendaOrdemPage extends StatelessWidget {
+  final CameraDescription camera;
+  const AgendaOrdemPage({Key key, this.camera}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    OrdemPedido ordemPedido = new OrdemPedido();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -39,7 +46,6 @@ class AgendaOrdemPage extends StatelessWidget {
             textColor: Colors.blueGrey,
             labelColor: Colors.blue,
             labelBorderWidth: 1,
-            autofocus: true,
             keyboardType: TextInputType.text,
             padding: const EdgeInsets.only(bottom: 22),
           ),
@@ -75,7 +81,16 @@ class AgendaOrdemPage extends StatelessWidget {
               height: 55.0,
               child: OutlineButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/Auth/Login');
+                  Navigator.of(context).push(PageRouteBuilder(
+                      opaque: false,
+                      pageBuilder: (BuildContext context, _, __) => UxCamera(
+                            camera: this.camera,
+                          )
+                      // UxDisplayPicture(
+                      //   camera: this.camera,
+                      //   ordemPedido: ordemPedido,
+                      // )
+                      ));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

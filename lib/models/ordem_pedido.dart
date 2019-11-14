@@ -15,6 +15,7 @@ class OrdemPedido {
   final Cliente cliente;
   final Empresa empresa;
   final Convenio convenio;
+  final Exame exame;
   final List<Exame> exames;
 
   OrdemPedido({
@@ -28,6 +29,7 @@ class OrdemPedido {
     this.cliente,
     this.empresa,
     this.convenio,
+    this.exame,
     this.exames,
   });
 
