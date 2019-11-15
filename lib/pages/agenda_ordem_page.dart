@@ -6,7 +6,7 @@ import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
 import 'package:uxlab/models/ordem_pedido.dart';
 import 'package:uxlab/widgets/camera/ux_camera.dart';
-import 'package:uxlab/widgets/camera/ux_display_picture.dart';
+import 'package:uxlab/widgets/modals/ux_selecionar_exame.dart';
 import 'package:uxlab/widgets/ux_input.dart';
 
 class AgendaOrdemPage extends StatelessWidget {
@@ -119,7 +119,11 @@ class AgendaOrdemPage extends StatelessWidget {
               height: 55.0,
               child: OutlineButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/Auth/Login');
+                  Navigator.of(context).push(PageRouteBuilder(
+                      opaque: false,
+                      pageBuilder: (BuildContext context, _, __) => 
+                        UxSelecionarExame(ordemPedido: ordemPedido,)
+                      ));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
