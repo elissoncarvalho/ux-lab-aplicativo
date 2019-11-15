@@ -5,18 +5,18 @@ import 'package:uxlab/models/empresa.dart';
 import 'package:uxlab/models/exame.dart';
 
 class OrdemPedido {
-  final int idOrdemPedido;
-  final int idPedidoExame;
-  final bool preparoExame;
-  final String status;
-  final DateTime dataOrdemPedido;
-  final DateTime dataExame;
-  final DateTime dataColeta;
-  final Cliente cliente;
-  final Empresa empresa;
-  final Convenio convenio;
-  final Exame exame;
-  final List<Exame> exames;
+  int idOrdemPedido;
+  int idPedidoExame;
+  bool preparoExame;
+  String status;
+  DateTime dataOrdemPedido;
+  DateTime dataExame;
+  DateTime dataColeta;
+  Cliente cliente;
+  Empresa empresa;
+  Convenio convenio;
+  Exame exame;
+  List<Exame> exames;
 
   OrdemPedido({
     this.idOrdemPedido,

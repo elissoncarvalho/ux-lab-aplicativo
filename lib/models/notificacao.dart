@@ -1,7 +1,7 @@
 class Notificacao {
-  final String titulo;
-  final String descricao;
-  final DateTime dateTime;
+  String titulo;
+  String descricao;
+  DateTime dateTime;
 
   Notificacao({
     this.titulo,

@@ -1,7 +1,7 @@
 class Status {
-  final String status;
-  final String titulo;
-  final String descricao;
+  String status;
+  String titulo;
+  String descricao;
 
   Status({
     this.status,

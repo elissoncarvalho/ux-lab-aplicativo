@@ -2,16 +2,16 @@ import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:uxlab/models/endereco.dart';
 
 class Cliente {
-  final String codCliente;
-  final String nome;
-  final String email;
-  final String cpf;
-  final String sexo;
-  final String urlImagePerfil;
-  final String telefone;
-  final String senha;
-  final DateTime dataNascimento;
-  final Endereco endereco;
+  String codCliente;
+  String nome;
+  String email;
+  String cpf;
+  String sexo;
+  String urlImagePerfil;
+  String telefone;
+  String senha;
+  DateTime dataNascimento;
+  Endereco endereco;
 
   Cliente({
     this.codCliente,

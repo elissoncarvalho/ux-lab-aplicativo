@@ -1,5 +1,5 @@
 class Convenio {
-  final String nome;
+  String nome;
 
   Convenio({
     this.nome,

@@ -2,12 +2,12 @@ import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:uxlab/models/endereco.dart';
 
 class Empresa {
-  final String codEmpresa;
-  final String nome;
-  final String email;
-  final String cnpj;
-  final String telefone;
-  final Endereco endereco;
+  String codEmpresa;
+  String nome;
+  String email;
+  String cnpj;
+  String telefone;
+  Endereco endereco;
 
   Empresa({
     this.codEmpresa,
