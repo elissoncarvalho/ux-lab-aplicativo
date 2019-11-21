@@ -62,10 +62,11 @@ class CadastroEnderecoPage extends StatelessWidget {
                         textColor: Colors.white,
                         labelColor: Colors.white,
                         padding: const EdgeInsets.only(bottom: 50),
+                        keyboardType: TextInputType.number,
                       ),
                        UxInput(
                         textLabel: 'Bairro',
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         textColor: Colors.white,
                         labelColor: Colors.white,
                         padding: const EdgeInsets.only(bottom: 50),

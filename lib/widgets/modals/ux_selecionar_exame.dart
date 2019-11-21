@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:uxlab/models/exame.dart';
 import 'package:uxlab/models/ordem_pedido.dart';
 import 'package:uxlab/widgets/ux_chip.dart';
+
+import 'package:http/http.dart' as http;
 
 class UxSelecionarExame extends StatelessWidget {
   final OrdemPedido ordemPedido;
@@ -15,6 +18,7 @@ class UxSelecionarExame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var repository = new NewsApi();
     List<Exame> _exames = [
       Exame(prefixo: 'glicose', descricao: 'Glicose', isSelected: false),
       Exame(prefixo: 'hemograma', descricao: 'Hemograma', isSelected: false),
@@ -111,5 +115,25 @@ class UxSelecionarExame extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void initState() {
+    // loadNo
+  }
+}
+
+class NewsApi {
+  String url = "http://localhost:8000/api/exame";
+
+  Future<List> loadNews() async {
+    try {
+      http.Response response = await http.get(url);
+
+      const JsonDecoder decoder = const JsonDecoder();
+
+      return decoder.convert(response.body);
+    } on Exception catch (_) {
+      return null;
+    }
   }
 }

@@ -48,6 +48,7 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     UxInput(
+                      labelColor: Colors.white,
                       textLabel: 'Email ou CPF',
                       textColor: Colors.white,
                       textPass: false,
@@ -55,6 +56,7 @@ class LoginPage extends StatelessWidget {
                       keyboardType: TextInputType.emailAddress,
                     ),
                     UxInput(
+                      labelColor: Colors.white,
                       textLabel: 'Senha',
                       textColor: Colors.white,
                       textPass: true,
