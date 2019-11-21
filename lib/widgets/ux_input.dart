@@ -17,8 +17,8 @@ class UxInput extends StatelessWidget {
     Key key,
     @required this.textLabel,
     this.textMask,
-    this.textColor,
-    this.labelColor,
+    @required this.textColor,
+    @required this.labelColor,
     this.labelBorderWidth,
     this.autofocus,
     this.textPass,
@@ -33,7 +33,7 @@ class UxInput extends StatelessWidget {
       child: TextFormField(
         autofocus: this.autofocus ?? false,
         obscureText: this.textPass ?? false,
-        keyboardType: this.keyboardType,
+        keyboardType: this.keyboardType ?? TextInputType.text,
         controller: this.textMask,
         style: TextStyle(color: this.textColor),
         decoration: InputDecoration(
