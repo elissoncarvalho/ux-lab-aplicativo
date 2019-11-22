@@ -41,6 +41,7 @@ class UxInput extends StatelessWidget {
           labelStyle: TextStyle(
               color: (this.labelColor ?? this.textColor),
               fontWeight: FontWeight.w500),
+
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.0),
             borderSide: BorderSide(
