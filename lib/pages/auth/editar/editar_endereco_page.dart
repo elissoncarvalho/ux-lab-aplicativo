@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:uxlab/pages/minha_conta_page.dart';
 import 'package:uxlab/widgets/ux_input.dart';
 
 class EditarEnderecoPage extends StatelessWidget {
@@ -28,7 +29,25 @@ class EditarEnderecoPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.done),
             onPressed: () {
-              Navigator.pop(context);
+              return showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Edição de Endereço'),
+                          content: const Text('Edição realizada com sucesso'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('Ok'),
+                              onPressed: () {
+                                Navigator.of(context).push(PageRouteBuilder(
+                                    pageBuilder:
+                                        (BuildContext context, _, __) =>
+                                            MinhaContaPage(cliente: null,)));
+                              },
+                            ),
+                          ],
+                        );
+                      });
             },
             color: Colors.blueGrey,
           ),

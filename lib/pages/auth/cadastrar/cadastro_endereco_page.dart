@@ -40,7 +40,7 @@ class CadastroEnderecoPage extends StatelessWidget {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: const Text('Entrando...'),
-                          content: const Text('Login realizado com sucesso'),
+                          content: const Text('Cadastro realizado com sucesso'),
                           actions: <Widget>[
                             FlatButton(
                               child: Text('Ok'),
