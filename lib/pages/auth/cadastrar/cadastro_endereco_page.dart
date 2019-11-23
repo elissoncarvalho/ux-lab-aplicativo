@@ -39,11 +39,15 @@ class CadastroEnderecoPage extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: const Text('Entrando...'),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          title: const Text('Login'),
                           content: const Text('Cadastro realizado com sucesso'),
                           actions: <Widget>[
-                            FlatButton(
+                            RaisedButton(
                               child: Text('Ok'),
+                               textColor: Colors.white,
                               onPressed: () {
                                 Navigator.of(context).push(PageRouteBuilder(
                                     pageBuilder:
