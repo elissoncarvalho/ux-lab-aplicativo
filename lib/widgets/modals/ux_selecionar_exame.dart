@@ -39,7 +39,7 @@ class UxSelecionarExame extends StatelessWidget {
       Exame(prefixo: 'ureia', descricao: 'Ureia', isSelected: false),
       Exame(
           prefixo: 'colesterol_fracoes',
-          descricao: 'Colesterol Frações',
+          descricao: 'Colest Frações',
           isSelected: false),
       Exame(prefixo: 'tgo_tgp', descricao: 'TGO/TGP', isSelected: false),
       Exame(

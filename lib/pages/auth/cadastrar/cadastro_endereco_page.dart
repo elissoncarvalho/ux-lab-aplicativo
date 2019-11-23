@@ -5,7 +5,6 @@ import 'package:uxlab/pages/auth/auth_page.dart';
 import 'package:uxlab/widgets/ux_input.dart';
 
 class CadastroEnderecoPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +18,7 @@ class CadastroEnderecoPage extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.blue.withOpacity(.6),
         ),
-      child: Scaffold(
+        child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text(
@@ -31,20 +30,35 @@ class CadastroEnderecoPage extends StatelessWidget {
             leading: IconButton(
               icon: Icon(Icons.keyboard_arrow_left),
               onPressed: () => Navigator.pop(context, false),
-      ),
-       actions: <Widget>[
+            ),
+            actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.done),
                 onPressed: () {
-                   Navigator.of(context).push(PageRouteBuilder(
-                      pageBuilder: (BuildContext context, _ , __ ) => 
-                          AuthPage()
-                      ));
-                      },
+                  return showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Entrando...'),
+                          content: const Text('Login realizado com sucesso'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('Ok'),
+                              onPressed: () {
+                                Navigator.of(context).push(PageRouteBuilder(
+                                    pageBuilder:
+                                        (BuildContext context, _, __) =>
+                                            AuthPage()));
+                              },
+                            ),
+                          ],
+                        );
+                      });
+                },
               ),
             ],
-      ),
-      body: ListView(
+          ),
+          body: ListView(
             children: [
               Container(
                 child: Padding(
@@ -64,30 +78,29 @@ class CadastroEnderecoPage extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 50),
                         keyboardType: TextInputType.number,
                       ),
-                       UxInput(
+                      UxInput(
                         textLabel: 'Bairro',
                         keyboardType: TextInputType.text,
                         textColor: Colors.white,
                         labelColor: Colors.white,
                         padding: const EdgeInsets.only(bottom: 50),
                       ),
-                       UxInput(
+                      UxInput(
                         textLabel: 'CEP',
                         textMask: MaskedTextController(mask: '00000-000'),
-                       keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.number,
                         textColor: Colors.white,
                         labelColor: Colors.white,
                         padding: const EdgeInsets.only(bottom: 50),
                       ),
-                      ],
+                    ],
                   ),
                 ),
               ),
             ],
           ),
-      )
-      )
+        ),
+      ),
     );
-    
   }
 }

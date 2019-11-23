@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:uxlab/models/cliente.dart';
+import 'package:uxlab/pages/auth/editar/editar_endereco_page.dart';
 import 'package:uxlab/widgets/ux_button_item.dart';
 
 class MinhaContaPage extends StatelessWidget {
@@ -98,12 +99,18 @@ class MinhaContaPage extends StatelessWidget {
                           UxButtonItem(
                             text: 'Editar perfil',
                             icon: Icon(Icons.edit),
-                            onPressed: () {},
+                            onPressed: () {
+                            },
                           ),
                           UxButtonItem(
                             text: 'Editar endereço',
                             icon: Icon(Icons.map),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(PageRouteBuilder(
+                                pageBuilder: (BuildContext context, _ , __ ) => 
+                                EditarEnderecoPage()
+                               ));
+                            },
                           )
                         ],
                       ),
