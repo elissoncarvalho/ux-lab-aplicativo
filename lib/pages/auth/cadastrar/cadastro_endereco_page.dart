@@ -49,10 +49,7 @@ class CadastroEnderecoPage extends StatelessWidget {
                               child: Text('Ok'),
                                textColor: Colors.white,
                               onPressed: () {
-                                Navigator.of(context).push(PageRouteBuilder(
-                                    pageBuilder:
-                                        (BuildContext context, _, __) =>
-                                            AuthPage()));
+                                
                               },
                             ),
                           ],

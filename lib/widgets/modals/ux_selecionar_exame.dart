@@ -1,14 +1,29 @@
 import 'dart:convert';
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:uxlab/models/exame.dart';
 import 'package:uxlab/models/ordem_pedido.dart';
 import 'package:uxlab/widgets/ux_chip.dart';
-
 import 'package:http/http.dart' as http;
+import 'package:uxlab/widgets/ux_circular_load.dart';
 
-class UxSelecionarExame extends StatelessWidget {
+// Faz a requsição na API
+Future<List<Exame>> fetchExame(http.Client client) async {
+  final response = await client.get('http://192.168.1.3/api/exame');
+
+  return compute(parseExames, response.body);
+}
+
+// Converte a resposta em Lista
+List<Exame> parseExames(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+
+  return parsed.map<Exame>((json) => Exame.fromJson(json)).toList();
+}
+
+class UxSelecionarExame extends StatefulWidget {
   final OrdemPedido ordemPedido;
 
   UxSelecionarExame({
@@ -17,42 +32,12 @@ class UxSelecionarExame extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    var repository = new NewsApi();
-    List<Exame> _exames = [
-      Exame(prefixo: 'glicose', descricao: 'Glicose', isSelected: false),
-      Exame(prefixo: 'hemograma', descricao: 'Hemograma', isSelected: false),
-      Exame(prefixo: 'gama_gt', descricao: 'Gama GT', isSelected: false),
-      Exame(
-          prefixo: 'urina_rotina',
-          descricao: 'Urina Rotina',
-          isSelected: false),
-      Exame(
-          prefixo: 'acido_urico', descricao: 'Ácido úrico', isSelected: false),
-      Exame(
-          prefixo: 'colesterol_total',
-          descricao: 'Colesterol Total',
-          isSelected: false),
-      Exame(
-          prefixo: 'bilirrubina', descricao: 'Bilirrubina', isSelected: false),
-      Exame(prefixo: 'epf', descricao: 'EPF', isSelected: false),
-      Exame(prefixo: 'ureia', descricao: 'Ureia', isSelected: false),
-      Exame(
-          prefixo: 'colesterol_fracoes',
-          descricao: 'Colest Frações',
-          isSelected: false),
-      Exame(prefixo: 'tgo_tgp', descricao: 'TGO/TGP', isSelected: false),
-      Exame(
-          prefixo: 'sangue_oculto',
-          descricao: 'Sangue Oculto',
-          isSelected: false),
-      Exame(prefixo: 'creatina', descricao: 'Creatina', isSelected: false),
-      Exame(
-          prefixo: 'triglicerides',
-          descricao: 'Triglicerides',
-          isSelected: false),
-    ];
+  _UxSelecionarExame createState() => _UxSelecionarExame();
+}
 
+class _UxSelecionarExame extends State<UxSelecionarExame> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -83,57 +68,50 @@ class UxSelecionarExame extends StatelessWidget {
       ),
       backgroundColor: Colors.white.withOpacity(0),
       body: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
-        child: ListView(
-          children: <Widget>[
+          filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
+          child: FutureBuilder<List<Exame>>(
+            future: fetchExame(http.Client()),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return _listExames(snapshot);
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return UxCircularLoad();
+            },
+          )),
+    );
+  }
+
+  ListView _listExames(AsyncSnapshot<List<Exame>> snapshot) {
+    return ListView(
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 60, bottom: 30, left: 30, right: 30),
-                      child: Wrap(
-                        runAlignment: WrapAlignment.spaceEvenly,
-                        spacing: 64,
-                        runSpacing: 30,
-                        children: _exames
-                            .map((exame) => UxChip(
-                                  textLabel: exame.descricao,
-                                  isSelected: exame.isSelected,
-                                ))
-                            .toList(),
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 60, bottom: 30, left: 30, right: 30),
+                  child: Wrap(
+                    runAlignment: WrapAlignment.spaceEvenly,
+                    spacing: 64,
+                    runSpacing: 30,
+                    children: snapshot.data
+                        .map((exame) => UxChip(
+                              textLabel: exame.descricao,
+                              isSelected: exame.isSelected,
+                            ))
+                        .toList(),
+                  ),
                 ),
               ],
             ),
           ],
         ),
-      ),
+      ],
     );
-  }
-
-  void initState() {
-    // loadNo
-  }
-}
-
-class NewsApi {
-  String url = "http://localhost:8000/api/exame";
-
-  Future<List> loadNews() async {
-    try {
-      http.Response response = await http.get(url);
-
-      const JsonDecoder decoder = const JsonDecoder();
-
-      return decoder.convert(response.body);
-    } on Exception catch (_) {
-      return null;
-    }
   }
 }

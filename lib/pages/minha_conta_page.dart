@@ -108,7 +108,7 @@ class MinhaContaPage extends StatelessWidget {
                             onPressed: () {
                               Navigator.of(context).push(PageRouteBuilder(
                                 pageBuilder: (BuildContext context, _ , __ ) => 
-                                EditarEnderecoPage()
+                                EditarEnderecoPage(cliente: this.cliente,)
                                ));
                             },
                           )
