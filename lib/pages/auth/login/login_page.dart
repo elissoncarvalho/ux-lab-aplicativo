@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uxlab/models/cliente.dart';
+import 'package:uxlab/pages/auth/recuperar/recuperar.dart';
 import 'package:uxlab/widgets/ux_input.dart';
 
 class LoginPage extends StatefulWidget {
@@ -86,25 +87,9 @@ class _LoginPageState extends State {
                     ButtonTheme(
                       child: FlatButton(
                         onPressed: () {
-                          // Navigator.of(context).pushNamed('/Auth/');
-                          showDialog<void>(
-                              context: context,
-                              builder: (BuildContext context,) {
-                                return AlertDialog(
-                                  title: const Text('Entrando...'),
-                                  content: Text(
-                                    "Email: ${this._cliente.email}; Senha: ${this._cliente.senha}"
-                                  ),
-                                  actions: <Widget>[
-                                    FlatButton(
-                                      child: Text('Okay'),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                  ],
-                                );
-                              });
+                          Navigator.of(context).push(PageRouteBuilder(
+                              pageBuilder: (BuildContext context, _, __) =>
+                                  Recuperar()));
                         },
                         child: const Text(
                           'RECUPERAR SENHA',

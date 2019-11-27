@@ -20,7 +20,7 @@ class Routes extends StatelessWidget {
         '/': (context) => AuthPage(),
         '/Auth/Login': (context) => LoginPage(),
         '/Auth/Cadastro': (context) => CadastroPage(),
-        '/auth/RecuperarSenha': (context) => AuthPage(),
+        //'/Auth/RecuperarSenha': (context) => Recuperar(),
 
         // Rotas de Navegação
         '/home': (context) => NavBar(camera: this.camera,),

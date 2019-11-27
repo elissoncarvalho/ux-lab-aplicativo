@@ -42,7 +42,7 @@ class AgendaOrdemPage extends StatelessWidget {
             const EdgeInsets.only(top: 25, bottom: 16, left: 16, right: 16),
         children: <Widget>[
           UxInput(
-            textLabel: 'Paciente',
+            textLabel: 'Nome completo',
             textColor: Colors.blueGrey,
             labelColor: Colors.blue,
             labelBorderWidth: 1,
