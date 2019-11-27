@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:uxlab/models/cliente.dart';
 import 'package:uxlab/models/empresa.dart';
 import 'package:uxlab/models/endereco.dart';
@@ -9,8 +12,28 @@ import 'package:uxlab/models/ordem_pedido.dart';
 import 'package:uxlab/widgets/ux_card.dart';
 import 'package:uxlab/widgets/ux_modal.dart';
 
-class MeusExamesPage extends StatelessWidget {
+// Faz a requsição na API
+Future<List<OrdemPedido>> fetchOrdemPedido(http.Client client) async {
+  final response = await client.get('http://uxlab.eastus.cloudapp.azure.com/api/meus_exames');
+
+  return compute(parseOrdemPedidos, response.body);
+}
+
+// Converte a resposta em Lista
+List<OrdemPedido> parseOrdemPedidos(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+
+  return parsed.map<OrdemPedido>((json) => OrdemPedido.fromJson(json)).toList();
+}
+
+class MeusExamesPage extends StatefulWidget {
   MeusExamesPage() : super();
+
+  @override
+  _MeusExamesPage createState() => _MeusExamesPage();
+}
+
+class _MeusExamesPage extends State<MeusExamesPage> {
   @override
   Widget build(BuildContext context) {
     List<OrdemPedido> ordemPedidos = [

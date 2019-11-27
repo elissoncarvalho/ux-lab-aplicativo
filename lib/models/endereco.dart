@@ -19,6 +19,34 @@ class Endereco {
     this.cep,
   });
 
+  factory Endereco.fromJson(Map<String, dynamic> json) {
+    return Endereco(
+      endereco: json['endereco'],
+      bairro: json['bairro'],
+      cidade: json['cidade'],
+      uf: json['uf'],
+      complemento: json['complemento'],
+      pais: json['pais'],
+      numero: json['numero'],
+      cep: json['cep'],
+    );
+  }
+
+  Map toMap() {
+    var map = new Map<String, dynamic>();
+
+    map["endereco"] = this.endereco;
+    map["bairro"] = this.bairro;
+    map["cidade"] = this.cidade;
+    map["uf"] = this.uf;
+    map["complemento"] = this.complemento;
+    map["pais"] = this.pais;
+    map["numero"] = this.numero;
+    map["cep"] = this.cep;
+
+    return map;
+  }
+
   String getDisplay() {
     String display =
         '${this.endereco}, ${this.numero}, ${this.bairro}, ${this.cidade}';

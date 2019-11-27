@@ -33,6 +33,23 @@ class OrdemPedido {
     this.exames,
   });
 
+  factory OrdemPedido.fromJson(Map<String, dynamic> json) {
+    return OrdemPedido(
+      idOrdemPedido: json['idOrdemPedido'],
+      idPedidoExame: json['idPedidoExame'],
+      preparoExame: json['preparoExame'],
+      status: json['status'],
+      dataOrdemPedido: json['dataOrdemPedido'],
+      dataExame: json['dataExame'],
+      dataColeta: json['dataColeta'],
+      cliente: Cliente.fromJson(json),
+      empresa: json['empresa'],
+      convenio: json['convenio'],
+      exame: Exame.fromJson(json),
+      exames: json['exames'],
+    );
+  }
+
   String getNomeExames() {
     String listaNomeExame;
     for (var exame in this.exames) {

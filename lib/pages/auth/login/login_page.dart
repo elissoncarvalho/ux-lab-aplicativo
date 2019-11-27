@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:uxlab/models/cliente.dart';
 import 'package:uxlab/widgets/ux_input.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State {
+  final Cliente _cliente = new Cliente();
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +61,13 @@ class LoginPage extends StatelessWidget {
                       textPass: false,
                       autofocus: true,
                       keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Por favor, entre com seu email ou cpf'
+                              .toString();
+                        }
+                      },
+                      onSaved: (val) => setState(() => this._cliente.email = val),
                     ),
                     UxInput(
                       labelColor: Colors.white,
@@ -62,11 +76,35 @@ class LoginPage extends StatelessWidget {
                       textPass: true,
                       autofocus: false,
                       keyboardType: TextInputType.text,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Por favor, entre com sua senha.';
+                        }
+                      },
+                      onSaved: (val) => setState(() => this._cliente.senha = val),
                     ),
                     ButtonTheme(
                       child: FlatButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/Auth/');
+                          // Navigator.of(context).pushNamed('/Auth/');
+                          showDialog<void>(
+                              context: context,
+                              builder: (BuildContext context,) {
+                                return AlertDialog(
+                                  title: const Text('Entrando...'),
+                                  content: Text(
+                                    "Email: ${this._cliente.email}; Senha: ${this._cliente.senha}"
+                                  ),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      child: Text('Okay'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                );
+                              });
                         },
                         child: const Text(
                           'RECUPERAR SENHA',

@@ -12,6 +12,8 @@ class UxInput extends StatelessWidget {
   final bool autofocus;
   final TextInputType keyboardType;
   final EdgeInsets padding;
+  final Function(String) validator;
+  final Function(String) onSaved;
 
   UxInput({
     Key key,
@@ -24,6 +26,8 @@ class UxInput extends StatelessWidget {
     this.textPass,
     this.keyboardType,
     this.padding,
+    this.validator,
+    this.onSaved,
   }) : super(key: key);
 
   @override
@@ -59,6 +63,8 @@ class UxInput extends StatelessWidget {
             borderRadius: BorderRadius.circular(25.0),
           ),
         ),
+        validator: this.validator,
+        onSaved: this.onSaved,
       ),
     );
   }
