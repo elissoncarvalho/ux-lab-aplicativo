@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:uxlab/pages/auth/recuperar/recuperar.dart';
 import 'package:uxlab/widgets/ux_input.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({Key key}) : super(key: key);
+class Recuperar extends StatelessWidget {
+  Recuperar({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class LoginPage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text(
-              'Entrar',
+              'Recuperar senha',
               style: TextStyle(fontSize: 14),
             ),
             centerTitle: true,
@@ -35,7 +34,7 @@ class LoginPage extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.done),
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/home');
+                  Navigator.of(context).pushNamed('/');
                 },
               ),
             ],
@@ -50,34 +49,11 @@ class LoginPage extends StatelessWidget {
                   children: <Widget>[
                     UxInput(
                       labelColor: Colors.white,
-                      textLabel: 'Email ou CPF',
+                      textLabel: 'E-MAIL, CPF OU TELEFONE',
                       textColor: Colors.white,
                       textPass: false,
                       autofocus: true,
                       keyboardType: TextInputType.emailAddress,
-                    ),
-                    UxInput(
-                      labelColor: Colors.white,
-                      textLabel: 'Senha',
-                      textColor: Colors.white,
-                      textPass: true,
-                      autofocus: false,
-                      keyboardType: TextInputType.text,
-                    ),
-                    ButtonTheme(
-                      child: FlatButton(
-                        onPressed: () {
-                          Navigator.of(context).push(PageRouteBuilder(
-                              pageBuilder: (BuildContext context, _, __) =>
-                                  Recuperar()));
-                        },
-                        child: const Text(
-                          'RECUPERAR SENHA',
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Colors.white),
-                        ),
-                      ),
                     ),
                   ],
                 ),
