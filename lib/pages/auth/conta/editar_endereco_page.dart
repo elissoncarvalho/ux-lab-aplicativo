@@ -70,36 +70,36 @@ class EditarEnderecoPage extends StatelessWidget {
         children: [
           Container(
             child: Padding(
-              padding: const EdgeInsets.only(top: 70, right: 30, left: 30),
+              padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
               child: Column(
                 children: [
                   UxInput(
-                    textLabel: 'Novo Endereço',
+                    textLabel: 'Alterar Endereço',
                     textColor: Colors.blue,
                     labelColor: Colors.blue,
-                    padding: const EdgeInsets.only(bottom: 50),
+                    padding: const EdgeInsets.only(bottom: 22),
                   ),
                   UxInput(
-                    textLabel: 'Novo Número',
+                    textLabel: 'Alterar Número',
                     textColor: Colors.blue,
                     labelColor: Colors.blue,
-                    padding: const EdgeInsets.only(bottom: 50),
+                    padding: const EdgeInsets.only(bottom: 22),
                     keyboardType: TextInputType.number,
                   ),
                   UxInput(
-                    textLabel: 'Novo Bairro',
+                    textLabel: 'Alterar Bairro',
                     keyboardType: TextInputType.text,
                     textColor: Colors.blue,
                     labelColor: Colors.blue,
-                    padding: const EdgeInsets.only(bottom: 50),
+                    padding: const EdgeInsets.only(bottom: 22),
                   ),
                   UxInput(
-                    textLabel: 'Novo CEP',
+                    textLabel: 'Alterar CEP',
                     textMask: MaskedTextController(mask: '00000-000'),
                     keyboardType: TextInputType.number,
                     textColor: Colors.blue,
                     labelColor: Colors.blue,
-                    padding: const EdgeInsets.only(bottom: 50),
+                    padding: const EdgeInsets.only(bottom: 22),
                   ),
                 ],
               ),

@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:uxlab/models/cliente.dart';
-import 'package:uxlab/pages/auth/editar/editar_endereco_page.dart';
+import 'package:uxlab/pages/auth/conta/definicoes_app.dart';
+import 'package:uxlab/pages/auth/conta/editar_endereco_page.dart';
+import 'package:uxlab/pages/auth/conta/altera_perfil.dart';
 import 'package:uxlab/widgets/ux_button_item.dart';
 
 class MinhaContaPage extends StatelessWidget {
@@ -100,6 +102,9 @@ class MinhaContaPage extends StatelessWidget {
                             text: 'Editar perfil',
                             icon: Icon(Icons.edit),
                             onPressed: () {
+                               Navigator.of(context).push(PageRouteBuilder(
+                              pageBuilder: (BuildContext context, _, __) =>
+                                  AlteraPerfil()));
                             },
                           ),
                           UxButtonItem(
@@ -122,7 +127,11 @@ class MinhaContaPage extends StatelessWidget {
                           UxButtonItem(
                             text: 'Definições do aplicativo',
                             icon: Icon(Icons.settings),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(PageRouteBuilder(
+                              pageBuilder: (BuildContext context, _, __) =>
+                                  DefinicoesApp()));
+                            },
                           ),
                           UxButtonItem(
                             text: 'Sair',
