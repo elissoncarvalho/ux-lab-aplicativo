@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'package:uxlab/pages/auth/auth_page.dart';
 import 'package:uxlab/widgets/ux_input.dart';
 
 class CadastroEnderecoPage extends StatelessWidget {
