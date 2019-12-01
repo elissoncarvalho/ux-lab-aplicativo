@@ -11,7 +11,8 @@ import 'package:uxlab/widgets/ux_circular_load.dart';
 
 // Faz a requsição na API
 Future<List<Exame>> fetchExame(http.Client client) async {
-  final response = await client.get('http://uxlab.eastus.cloudapp.azure.com/api/exame');
+  // final response = await client.get('http://uxlab.eastus.cloudapp.azure.com/api/exame');
+  final response = await client.get('http://192.168.1.3:8080/api/exame');
 
   return compute(parseExames, response.body);
 }

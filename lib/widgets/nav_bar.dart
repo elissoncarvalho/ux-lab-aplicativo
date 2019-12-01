@@ -12,14 +12,15 @@ import 'package:uxlab/widgets/ux_circular_load.dart';
 
 // Faz a requsição na API
 Future<Cliente> fetchCliente() async {
-  final response = await http.get('http://uxlab.eastus.cloudapp.azure.com/api/cliente');
+  // final response = await http.get('http://uxlab.eastus.cloudapp.azure.com/api/cliente');
+  final response = await http.get('http://192.168.1.3:8080/api/cliente/1');
 
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON.
     return Cliente.fromJson(json.decode(response.body));
   } else {
     // If that call was not successful, throw an error.
-    throw Exception('Failed to load Cleinte');
+    throw Exception(json.decode(response.body)['msg']);
   }
 }
 

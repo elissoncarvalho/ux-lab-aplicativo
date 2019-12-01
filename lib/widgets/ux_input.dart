@@ -14,6 +14,7 @@ class UxInput extends StatelessWidget {
   final EdgeInsets padding;
   final Function(String) validator;
   final Function(String) onSaved;
+  final Function(String) onChanged;
 
   UxInput({
     Key key,
@@ -28,6 +29,7 @@ class UxInput extends StatelessWidget {
     this.padding,
     this.validator,
     this.onSaved,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -35,6 +37,7 @@ class UxInput extends StatelessWidget {
     return Padding(
       padding: this.padding ?? const EdgeInsets.all(0),
       child: TextFormField(
+        onChanged: this.onChanged,
         autofocus: this.autofocus ?? false,
         obscureText: this.textPass ?? false,
         keyboardType: this.keyboardType ?? TextInputType.text,
@@ -44,8 +47,7 @@ class UxInput extends StatelessWidget {
           labelText: this.textLabel,
           labelStyle: TextStyle(
               color: (this.labelColor ?? this.textColor),
-              fontWeight: FontWeight.w500),
-
+              fontWeight: FontWeight.w400),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.0),
             borderSide: BorderSide(

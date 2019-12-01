@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'package:uxlab/pages/auth/auth_page.dart';
+import 'package:uxlab/models/cliente.dart';
 import 'package:uxlab/widgets/ux_input.dart';
 
 class CadastroEnderecoPage extends StatelessWidget {
+  final Cliente cliente;
+  CadastroEnderecoPage({Key key, @required this.cliente}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/fundo.png'),
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
         ),
       ),
       child: Container(
@@ -41,16 +43,14 @@ class CadastroEnderecoPage extends StatelessWidget {
                         return AlertDialog(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
-                            ),
+                          ),
                           title: const Text('Login'),
                           content: const Text('Cadastro realizado com sucesso'),
                           actions: <Widget>[
                             RaisedButton(
                               child: Text('Ok'),
-                               textColor: Colors.white,
-                              onPressed: () {
-                                
-                              },
+                              textColor: Colors.white,
+                              onPressed: () {},
                             ),
                           ],
                         );

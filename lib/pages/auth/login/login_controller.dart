@@ -19,7 +19,7 @@ class LoginController {
       uf: 'Minas Gerais',
     ),
     senha: 'admin',
-    sexo: 'Feminino',
+    sexo: 'feminino',
     telefone: '(37) 99158-9173',
   );
 

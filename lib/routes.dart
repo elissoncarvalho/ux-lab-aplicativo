@@ -2,7 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:uxlab/pages/auth/auth_page.dart';
-import 'package:uxlab/pages/auth/cadastrar/cadastro_page.dart';
+import 'package:uxlab/pages/auth/cadastrar/cadastro_conta_page.dart';
 import 'package:uxlab/pages/auth/login/login_page.dart';
 import 'package:uxlab/widgets/nav_bar.dart';
 
@@ -19,7 +19,7 @@ class Routes extends StatelessWidget {
         // Rotas de Login e Cadastro
         '/': (context) => AuthPage(),
         '/Auth/Login': (context) => LoginPage(),
-        '/Auth/Cadastro': (context) => CadastroPage(),
+        '/Auth/Cadastro': (context) => CadastroContaPage(),
         //'/Auth/RecuperarSenha': (context) => Recuperar(),
 
         // Rotas de Navegação

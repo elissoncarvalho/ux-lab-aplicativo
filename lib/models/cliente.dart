@@ -39,8 +39,8 @@ class Cliente {
       urlImagePerfil: json['url_image_perfil'],
       telefone: json['telefone'],
       senha: json['senha'],
-      dataNascimento: json['data_nascimento'],
-      endereco: Endereco.fromJson(json),
+      dataNascimento: DateTime.parse(json['data_nascimento']),
+      endereco: Endereco.fromJson(json['endereco']),
     );
   }
   Map toMap() {

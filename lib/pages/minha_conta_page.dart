@@ -14,7 +14,7 @@ class MinhaContaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AssetImage _urlImagemPerfil = AssetImage(this.cliente.urlImagePerfil);
+    // AssetImage _urlImagemPerfil = AssetImage(this.cliente.urlImagePerfil) ?? '';
     return Container(
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -24,9 +24,9 @@ class MinhaContaPage extends StatelessWidget {
           Expanded(
               flex: 55,
               child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: _urlImagemPerfil, fit: BoxFit.cover)),
+                // decoration: BoxDecoration(
+                    // image: DecorationImage(
+                    //     image: _urlImagemPerfil, fit: BoxFit.cover)),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
                   child: Container(
@@ -44,8 +44,8 @@ class MinhaContaPage extends StatelessWidget {
                           width: 150,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            image: DecorationImage(
-                                image: _urlImagemPerfil, fit: BoxFit.cover),
+                            // image: DecorationImage(
+                            //     image: _urlImagemPerfil, fit: BoxFit.cover),
                           ),
                         ),
                         Text(
