@@ -55,7 +55,7 @@ class UxCard extends StatelessWidget {
       },
     };
 
-    if (this.ordemPedido.status == 'aguardando_coleta') {
+    if (this.ordemPedido.status.prefixo == 'aguardando_coleta') {
       return Column(
         children: <Widget>[
           Padding(
@@ -162,11 +162,11 @@ class UxCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  _status[ordemPedido.status]['txt'],
+                  _status[ordemPedido.status.prefixo]['txt'],
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: _status[ordemPedido.status]['color'],
+                    color: _status[ordemPedido.status.prefixo]['color'],
                   ),
                 ),
               ],

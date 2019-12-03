@@ -15,7 +15,8 @@ class UxInput extends StatelessWidget {
   final Function(String) validator;
   final Function(String) onSaved;
   final Function(String) onChanged;
-
+  final String valor;
+ 
   UxInput({
     Key key,
     @required this.textLabel,
@@ -30,6 +31,7 @@ class UxInput extends StatelessWidget {
     this.validator,
     this.onSaved,
     this.onChanged,
+    this.valor,
   }) : super(key: key);
 
   @override
@@ -42,6 +44,7 @@ class UxInput extends StatelessWidget {
         obscureText: this.textPass ?? false,
         keyboardType: this.keyboardType ?? TextInputType.text,
         controller: this.textMask,
+        initialValue: this.valor,
         style: TextStyle(color: this.textColor),
         decoration: InputDecoration(
           labelText: this.textLabel,

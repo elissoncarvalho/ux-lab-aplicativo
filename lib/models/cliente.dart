@@ -1,5 +1,8 @@
 import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:uxlab/models/endereco.dart';
+
+@JsonSerializable()
 
 class Cliente {
   int idCliente;
@@ -36,16 +39,32 @@ class Cliente {
       email: json['email'],
       cpf: json['cpf'],
       sexo: json['sexo'],
-      urlImagePerfil: json['url_image_perfil'],
+      urlImagePerfil: json['url_image_perfil'] ?? 'assets/images/avatar_girl.jpg',
       telefone: json['telefone'],
       senha: json['senha'],
       dataNascimento: DateTime.parse(json['data_nascimento']),
       endereco: Endereco.fromJson(json['endereco']),
     );
   }
+
+  // Map<String, dynamic> toJson() => _$ClienteToJson(this);
+  // Map<String, dynamic> toJson() => {
+  //       'id_cliente': this.idCliente,
+  //       'cod_cliente': this.codCliente,
+  //       'nome': this.nome,
+  //       'email': this.email,
+  //       'cpf': this.cpf,
+  //       'sexo': this.sexo,
+  //       'url_image_perfil': this.urlImagePerfil,
+  //       'telefone': this.telefone,
+  //       'senha': this.senha,
+  //       'data_nascimento': this.dataNascimento,
+  //       'endereco': this.endereco.toJson()
+  //     };
+
   Map toMap() {
     var map = new Map<String, dynamic>();
-    
+
     map["id_cliente"] = this.idCliente;
     map["cod_cliente"] = this.codCliente;
     map["nome"] = this.nome;

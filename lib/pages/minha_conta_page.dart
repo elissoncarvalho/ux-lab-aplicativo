@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -6,15 +7,65 @@ import 'package:uxlab/pages/auth/conta/definicoes_app.dart';
 import 'package:uxlab/pages/auth/conta/editar_endereco_page.dart';
 import 'package:uxlab/pages/auth/conta/altera_perfil.dart';
 import 'package:uxlab/widgets/ux_button_item.dart';
+import 'package:http/http.dart' as http;
+import 'package:uxlab/widgets/ux_circular_load.dart';
 
-class MinhaContaPage extends StatelessWidget {
-  final Cliente cliente;
+// Faz a requsição na API
+Future<Cliente> fetchCliente() async {
+  // final response = await http.get('http://uxlab.eastus.cloudapp.azure.com/api/cliente/1');
+  final response = await http.get('http://192.168.1.3:8080/api/cliente/1');
 
-  MinhaContaPage({Key key, @required this.cliente}) : super();
+  if (response.statusCode == 200) {
+    // If the call to the server was successful, parse the JSON.
+    return Cliente.fromJson(jsonDecode(response.body));
+  } else {
+    // If that call was not successful, throw an error.
+    throw Exception(jsonDecode(response.body)['msg']);
+  }
+}
+
+class MinhaContaPage extends StatefulWidget {
+  MinhaContaPage({Key key}) : super();
+
+  @override
+  _MinhaContaPage createState() => _MinhaContaPage();
+}
+
+class _MinhaContaPage extends State<MinhaContaPage> {
+  Future<Cliente> cliente;
+
+  @override
+  void initState() {
+    super.initState();
+    cliente = fetchCliente();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // AssetImage _urlImagemPerfil = AssetImage(this.cliente.urlImagePerfil) ?? '';
+    return FutureBuilder<Cliente>(
+      future: cliente,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          Cliente cliente = new Cliente(
+            codCliente: snapshot.data.codCliente,
+            nome: snapshot.data.nome,
+            cpf: snapshot.data.cpf,
+            email: snapshot.data.email,
+            urlImagePerfil: snapshot.data.urlImagePerfil,
+          );
+          return this._exibe(cliente);
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+
+        // By default, show a loading spinner.
+        return UxCircularLoad();
+      },
+    );
+  }
+
+  _exibe(Cliente cliente) {
+    AssetImage _urlImagemPerfil = AssetImage(cliente.urlImagePerfil);
     return Container(
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -24,9 +75,9 @@ class MinhaContaPage extends StatelessWidget {
           Expanded(
               flex: 55,
               child: Container(
-                // decoration: BoxDecoration(
-                    // image: DecorationImage(
-                    //     image: _urlImagemPerfil, fit: BoxFit.cover)),
+                decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: _urlImagemPerfil, fit: BoxFit.cover)),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
                   child: Container(
@@ -44,12 +95,12 @@ class MinhaContaPage extends StatelessWidget {
                           width: 150,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            // image: DecorationImage(
-                            //     image: _urlImagemPerfil, fit: BoxFit.cover),
+                            image: DecorationImage(
+                                image: _urlImagemPerfil, fit: BoxFit.cover),
                           ),
                         ),
                         Text(
-                          this.cliente.nome,
+                          cliente.nome,
                           style: TextStyle(
                             fontSize: 27,
                             fontWeight: FontWeight.normal,
@@ -59,21 +110,21 @@ class MinhaContaPage extends StatelessWidget {
                         Column(
                           children: <Text>[
                             Text(
-                              'Cliente: ${this.cliente.codCliente}',
+                              'Cliente: ${cliente.codCliente}',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
                               ),
                             ),
                             Text(
-                              'CPF: ${this.cliente.cpf}',
+                              'CPF: ${cliente.cpf}',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
                               ),
                             ),
                             Text(
-                              'E-mail: ${this.cliente.email}',
+                              'E-mail: ${cliente.email}',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
@@ -102,9 +153,9 @@ class MinhaContaPage extends StatelessWidget {
                             text: 'Editar perfil',
                             icon: Icon(Icons.edit),
                             onPressed: () {
-                               Navigator.of(context).push(PageRouteBuilder(
-                              pageBuilder: (BuildContext context, _, __) =>
-                                  AlteraPerfil()));
+                              Navigator.of(context).push(PageRouteBuilder(
+                                  pageBuilder: (BuildContext context, _, __) =>
+                                      AlteraPerfil(cliente: cliente,)));
                             },
                           ),
                           UxButtonItem(
@@ -112,9 +163,10 @@ class MinhaContaPage extends StatelessWidget {
                             icon: Icon(Icons.map),
                             onPressed: () {
                               Navigator.of(context).push(PageRouteBuilder(
-                                pageBuilder: (BuildContext context, _ , __ ) => 
-                                EditarEnderecoPage(cliente: this.cliente,)
-                               ));
+                                  pageBuilder: (BuildContext context, _, __) =>
+                                      EditarEnderecoPage(
+                                        cliente: cliente,
+                                      )));
                             },
                           )
                         ],
@@ -129,8 +181,8 @@ class MinhaContaPage extends StatelessWidget {
                             icon: Icon(Icons.settings),
                             onPressed: () {
                               Navigator.of(context).push(PageRouteBuilder(
-                              pageBuilder: (BuildContext context, _, __) =>
-                                  DefinicoesApp()));
+                                  pageBuilder: (BuildContext context, _, __) =>
+                                      DefinicoesApp()));
                             },
                           ),
                           UxButtonItem(

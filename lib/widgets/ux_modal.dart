@@ -47,7 +47,7 @@ class UxModal extends StatelessWidget {
   }
 
   Widget _tipoComprovante(BuildContext context, OrdemPedido ordemPedido) {
-    switch (ordemPedido.status) {
+    switch (ordemPedido.status.prefixo) {
       case 'aguardando_coleta':
         return UxAgendamentoComprovante(
           ordemPedido: ordemPedido,

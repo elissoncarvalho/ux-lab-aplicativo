@@ -15,7 +15,7 @@ class Exame {
 
   factory Exame.fromJson(Map<String, dynamic> json) {
     return Exame(
-      idExame: json['id_exame'],
+      idExame: json['id'],
       prefixo: json['prefixo'],
       descricao: json['descricao'],
       imagePath: json['image_path'],

@@ -47,6 +47,7 @@ class AlteraSenha extends StatelessWidget {
             labelBorderWidth: 1,
             keyboardType: TextInputType.text,
             padding: const EdgeInsets.only(bottom: 22),
+            textPass: true,
           ),
           UxInput(
             textLabel: 'Nova Senha',
@@ -56,6 +57,7 @@ class AlteraSenha extends StatelessWidget {
             labelBorderWidth: 1,
             keyboardType: TextInputType.number,
             padding: const EdgeInsets.only(bottom: 22),
+            textPass: true,
           ),
           UxInput(
             textLabel: 'Confirmar Senha',
@@ -64,6 +66,7 @@ class AlteraSenha extends StatelessWidget {
             labelBorderWidth: 1,
             keyboardType: TextInputType.text,
             padding: const EdgeInsets.only(bottom: 22),
+            textPass: true,
           ),
         ],
       ),

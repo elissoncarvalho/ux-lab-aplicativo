@@ -1,22 +1,18 @@
 import 'dart:convert';
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:uxlab/models/cliente.dart';
-import 'package:uxlab/models/empresa.dart';
-import 'package:uxlab/models/endereco.dart';
-import 'package:uxlab/models/exame.dart';
 import 'package:uxlab/models/ordem_pedido.dart';
 import 'package:uxlab/widgets/ux_card.dart';
+import 'package:uxlab/widgets/ux_circular_load.dart';
 import 'package:uxlab/widgets/ux_modal.dart';
 
 // Faz a requsição na API
 Future<List<OrdemPedido>> fetchOrdemPedido(http.Client client) async {
-  final response = await client.get('http://uxlab.eastus.cloudapp.azure.com/api/meus_exames');
-
-  return compute(parseOrdemPedidos, response.body);
+final response =
+      await client.get('http://192.168.1.3:8080/api/ordem_pedido/');
+  return parseOrdemPedidos(response.body);
 }
 
 // Converte a resposta em Lista
@@ -34,137 +30,42 @@ class MeusExamesPage extends StatefulWidget {
 }
 
 class _MeusExamesPage extends State<MeusExamesPage> {
+  
   @override
   Widget build(BuildContext context) {
-    List<OrdemPedido> ordemPedidos = [
-      OrdemPedido(
-          idOrdemPedido: 20190004,
-          status: 'aguardando_coleta',
-          dataColeta: DateTime.parse('2019-10-20'),
-          dataOrdemPedido: DateTime.parse('2019-10-10'),
-          cliente: Cliente(
-            nome: 'Luísa Braga Santos',
-            cpf: '12312312332',
-          ),
-          empresa: Empresa(
-              nome: 'BioLab Análises Clínica',
-              telefone: '3732811234',
-              endereco: Endereco(
-                  bairro: 'Centro',
-                  cidade: 'Bom Despacho',
-                  numero: 1002,
-                  endereco: 'Av.Tiradentes')),
-          exames: [
-            Exame(descricao: 'Hemograma'),
-            Exame(descricao: 'Urina Rotina'),
-            Exame(descricao: 'EPF'),
-          ],
-          preparoExame: true),
-      OrdemPedido(
-          idOrdemPedido: 20190004,
-          status: 'aguardando_coleta',
-          dataColeta: DateTime.parse('2019-10-15'),
-          dataOrdemPedido: DateTime.parse('2019-10-10'),
-          cliente: Cliente(
-            nome: 'Luísa Braga Santos',
-            cpf: '12312312332',
-          ),
-          empresa: Empresa(
-              nome: 'BioLab Análises Clínica',
-              telefone: '3732811234',
-              endereco: Endereco(
-                  bairro: 'Centro',
-                  cidade: 'Bom Despacho',
-                  numero: 1002,
-                  endereco: 'Av.Tiradentes')),
-          exames: [
-            Exame(descricao: 'Urina Rotina'),
-            Exame(descricao: 'EPF'),
-          ],
-          preparoExame: false),
-    ];
-    List<OrdemPedido> meusExames = [
-      OrdemPedido(
-          idOrdemPedido: 0002,
-          idPedidoExame: 20190620,
-          status: 'aguardando_analise',
-          dataColeta: DateTime.parse('2019-10-15'),
-          dataOrdemPedido: DateTime.parse('2019-10-10'),
-          cliente: Cliente(
-            nome: 'Luísa Braga Santos',
-            cpf: '12312312332',
-          ),
-          empresa: Empresa(
-              nome: 'BioLab Análises Clínica',
-              telefone: '3732811234',
-              endereco: Endereco(
-                  bairro: 'Centro',
-                  cidade: 'Bom Despacho',
-                  numero: 1002,
-                  endereco: 'Av.Tiradentes')),
-          exames: [
-            Exame(descricao: 'Hemograma'),
-            Exame(descricao: 'Urina Rotina'),
-            Exame(descricao: 'EPF'),
-          ],
-          preparoExame: true),
-      OrdemPedido(
-          idOrdemPedido: 0003,
-          idPedidoExame: 20190620,
-          status: 'pendente',
-          dataColeta: DateTime.parse('2019-10-15'),
-          dataOrdemPedido: DateTime.parse('2019-10-10'),
-          cliente: Cliente(
-            nome: 'Luísa Braga Santos',
-            cpf: '12312312332',
-          ),
-          empresa: Empresa(
-              nome: 'BioLab Análises Clínica',
-              telefone: '3732811234',
-              endereco: Endereco(
-                  bairro: 'Centro',
-                  cidade: 'Bom Despacho',
-                  numero: 1002,
-                  endereco: 'Av.Tiradentes')),
-          exames: [
-            Exame(descricao: 'Hemograma'),
-            Exame(descricao: 'Urina Rotina'),
-            Exame(descricao: 'EPF'),
-          ],
-          preparoExame: true),
-      OrdemPedido(
-          idOrdemPedido: 0003,
-          idPedidoExame: 20190620,
-          status: 'concluido',
-          dataColeta: DateTime.parse('2019-10-15'),
-          dataOrdemPedido: DateTime.parse('2019-10-10'),
-          cliente: Cliente(
-            nome: 'Luísa Braga Santos',
-            cpf: '12312312332',
-          ),
-          empresa: Empresa(
-              nome: 'BioLab Análises Clínica',
-              telefone: '3732811234',
-              endereco: Endereco(
-                  bairro: 'Centro',
-                  cidade: 'Bom Despacho',
-                  numero: 1002,
-                  endereco: 'Av.Tiradentes')),
-          exames: [
-            Exame(descricao: 'Hemograma'),
-            Exame(descricao: 'Urina Rotina'),
-            Exame(descricao: 'EPF'),
-          ],
-          preparoExame: true),
-    ];
-    return ListView(
-      padding: const EdgeInsets.only(top: 50, right: 15, left: 15),
-      children: [
-        ordemPedidos.length > 0
-            ? _proximosExames(ordemPedidos, context)
-            : Container(),
-        meusExames.length > 0 ? _meusExames(meusExames, context) : Container(),
-      ],
+    return FutureBuilder<List<OrdemPedido>>(
+      future: fetchOrdemPedido(http.Client()),
+      builder: (context, snapshot) {
+        if (snapshot.hasData && snapshot.data.length > 0) {
+          List<OrdemPedido> ordemPedidos = [];
+          List<OrdemPedido> meusExames = [];
+          for (var item in snapshot.data) {
+            if (item.status.prefixo == 'aguardando_coleta') {
+              ordemPedidos.add(item);
+            } else {
+              meusExames.add(item);
+            }
+          }
+          return ListView(
+            padding: const EdgeInsets.only(top: 50, right: 15, left: 15),
+            children: [
+              ordemPedidos.length > 0
+                  ? _proximosExames(ordemPedidos, context)
+                  : Container(),
+              meusExames.length > 0
+                  ? _meusExames(meusExames, context)
+                  : Container(),
+            ],
+          );
+        } else if (snapshot.hasData && snapshot.data.length == 0) {
+          return Text('Nenhum pedido Cadastrado');
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+
+        // By default, show a loading spinner.
+        return UxCircularLoad();
+      },
     );
   }
 

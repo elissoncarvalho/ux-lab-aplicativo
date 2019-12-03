@@ -78,6 +78,7 @@ class EditarEnderecoPage extends StatelessWidget {
                     textColor: Colors.blue,
                     labelColor: Colors.blue,
                     padding: const EdgeInsets.only(bottom: 22),
+                    
                   ),
                   UxInput(
                     textLabel: 'Alterar Número',

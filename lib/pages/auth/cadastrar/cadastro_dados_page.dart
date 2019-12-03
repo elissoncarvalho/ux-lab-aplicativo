@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:uxlab/models/cliente.dart';
 import 'package:uxlab/pages/auth/cadastrar/cadastro_endereco_page.dart';
 import 'package:uxlab/widgets/ux_input.dart';
@@ -14,10 +13,11 @@ class CadastroDadosPage extends StatefulWidget {
 }
 
 class _CadastroFormState extends State<CadastroDadosPage> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  Cliente _cliente;
+  GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  Cliente _cliente = new Cliente();
+
   String _validateNome(String value) {
-    if (value.isEmpty && value.length < 5) {
+    if (value.isEmpty) {
       return 'O nome não pode ser vasio';
     }
     return null;
@@ -45,20 +45,18 @@ class _CadastroFormState extends State<CadastroDadosPage> {
   }
 
   void submit() {
-    print('Email: ${_cliente.email}');
     if (this._formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print('Email: ${_cliente.email}');
-      // Navigator.of(context).push(PageRouteBuilder(
-      //     pageBuilder: (BuildContext context, _, __) => CadastroEnderecoPage(
-      //           cliente: this._cliente,
-      //         )));
+      Navigator.of(context).push(PageRouteBuilder(
+          pageBuilder: (BuildContext context, _, __) => CadastroEnderecoPage(
+                cliente: this._cliente,
+              )));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    _cliente = widget.cliente;
+    this._cliente = widget.cliente;
     return Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -89,7 +87,8 @@ class _CadastroFormState extends State<CadastroDadosPage> {
               ),
               body: ListView(
                 children: [
-                  Container(
+                  Form(
+                    key: this._formKey,
                     child: Padding(
                       padding:
                           const EdgeInsets.only(top: 70, right: 30, left: 30),
@@ -100,6 +99,7 @@ class _CadastroFormState extends State<CadastroDadosPage> {
                               textColor: Colors.white,
                               labelColor: Colors.white,
                               padding: const EdgeInsets.only(bottom: 50),
+                              keyboardType: TextInputType.text,
                               validator: this._validateNome,
                               onSaved: (value) {
                                 setState(() {
@@ -125,6 +125,7 @@ class _CadastroFormState extends State<CadastroDadosPage> {
                               textColor: Colors.white,
                               labelColor: Colors.white,
                               padding: const EdgeInsets.only(bottom: 50),
+                              keyboardType: TextInputType.text,
                               validator: this._validateSexo,
                               onSaved: (value) {
                                 setState(() {
@@ -132,8 +133,8 @@ class _CadastroFormState extends State<CadastroDadosPage> {
                                 });
                               }),
                           UxInput(
-                              textMask:
-                                  MaskedTextController(mask: '(00) 00000-0000'),
+                              // textMask:
+                              //     MaskedTextController(mask: '(00) 00000-0000'),
                               keyboardType: TextInputType.number,
                               textLabel: 'Telefone',
                               textColor: Colors.white,

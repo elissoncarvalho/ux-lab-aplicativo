@@ -2,7 +2,7 @@ import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:uxlab/models/endereco.dart';
 
 class Empresa {
-  String codEmpresa;
+  int codEmpresa;
   String nome;
   String email;
   String cnpj;
@@ -17,6 +17,17 @@ class Empresa {
     this.telefone,
     this.endereco,
   });
+
+  factory Empresa.fromJson(Map<String, dynamic> json) {
+    return Empresa(
+      codEmpresa: json['id'],
+      nome: json['nome_razao_social'],
+      email: json['email'],
+      cnpj: json['cnpj'],
+      telefone: json['telefone'],
+      endereco: Endereco.fromJson(json['endereco']),
+    );
+  }
 
   String maskTelefone() {
     MaskedTextController mask = MaskedTextController(

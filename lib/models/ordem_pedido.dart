@@ -3,12 +3,13 @@ import 'package:uxlab/models/cliente.dart';
 import 'package:uxlab/models/convenio.dart';
 import 'package:uxlab/models/empresa.dart';
 import 'package:uxlab/models/exame.dart';
+import 'package:uxlab/models/status.dart';
 
 class OrdemPedido {
   int idOrdemPedido;
   int idPedidoExame;
   bool preparoExame;
-  String status;
+  Status status;
   DateTime dataOrdemPedido;
   DateTime dataExame;
   DateTime dataColeta;
@@ -35,26 +36,27 @@ class OrdemPedido {
 
   factory OrdemPedido.fromJson(Map<String, dynamic> json) {
     return OrdemPedido(
-      idOrdemPedido: json['idOrdemPedido'],
-      idPedidoExame: json['idPedidoExame'],
-      preparoExame: json['preparoExame'],
-      status: json['status'],
-      dataOrdemPedido: json['dataOrdemPedido'],
-      dataExame: json['dataExame'],
-      dataColeta: json['dataColeta'],
-      cliente: Cliente.fromJson(json),
-      empresa: json['empresa'],
-      convenio: json['convenio'],
-      exame: Exame.fromJson(json),
-      exames: json['exames'],
+      idOrdemPedido: json['id'],
+      idPedidoExame: json['id_ordem_pedido'],
+      cliente: Cliente.fromJson(json['cliente']),
+      empresa: Empresa.fromJson(json['empresa']),
+      status: Status.fromJson(json['status']) ?? null,
+      convenio: Convenio.fromJson(json['convenio']) ?? null,
+      exame: Exame.fromJson(json['exames']) ?? null,
+      preparoExame: json['preparo_exame'],
+      dataOrdemPedido: DateTime.parse(json['created_at']),
+      dataExame: DateTime.parse(json['data_exame']),
+      dataColeta: DateTime.parse(json['data_coleta']),
+      // exames: json['exames'],
     );
   }
 
   String getNomeExames() {
     String listaNomeExame;
-    for (var exame in this.exames) {
-      listaNomeExame = '${listaNomeExame ?? ''} ${exame.descricao};';
-    }
+    // for (var exame in this.exames) {
+    //   listaNomeExame = '${listaNomeExame ?? ''} ${exame.descricao};';
+    // }
+    listaNomeExame = '${listaNomeExame ?? ''} ${exame.descricao};';
     return listaNomeExame.trim();
   }
 

@@ -55,7 +55,7 @@ class _CadastroFormState extends State<CadastroContaPage> {
       } else {
         Navigator.of(context).push(PageRouteBuilder(
             pageBuilder: (BuildContext context, _, __) => CadastroDadosPage(
-                  cliente: this._cliente,
+                  cliente: this._cliente
                 )));
       }
     }

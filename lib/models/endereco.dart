@@ -32,6 +32,17 @@ class Endereco {
     );
   }
 
+  Map<String, dynamic> toJson() => {
+        'endereco': this.endereco,
+        'bairro': this.bairro,
+        'cidade': this.cidade,
+        'uf': this.uf,
+        'complemento': this.complemento,
+        'pais': this.pais,
+        'numero': this.numero,
+        'cep': this.cep,
+      };
+
   Map toMap() {
     var map = new Map<String, dynamic>();
 
